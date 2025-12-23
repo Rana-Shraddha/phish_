@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canva Pro - Free Trial</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #ff6b6b, #5433ff, #20bdff, #00ff88);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: #333;
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 30px 0;
+            color: white;
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+        
+        .hero {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #ff9966, #ff5e62);
+        }
+        
+        h1 {
+            color: #29303b;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .highlight {
+            color: #ff5e62;
+            font-weight: 700;
+        }
+        
+        .price {
+            font-size: 3rem;
+            font-weight: 800;
+            margin: 20px 0;
+            color: #29303b;
+        }
+        
+        .original-price {
+            text-decoration: line through;
+            color: #888;
+            font-size: 1.5rem;
+            margin-right: 15px;
+        }
+        
+        .discount {
+            color: #ff5e62;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .countdown {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            display: inline-block;
+        }
+        
+        .timer {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #ff5e62;
+        }
+        
+        .features {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 40px 0;
+        }
+        
+        .feature {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            width: 30%;
+            min-width: 250px;
+            margin: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .feature h3 {
+            color: #29303b;
+            margin-bottom: 15px;
+        }
+        
+        footer {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+            padding: 30px 0;
+            font-size: 0.9rem;
+        }
+        
+        /* Popup Styles */
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60%;
+            max-width: 600px;
+            background: white;
+            z-index: 10001;
+            display: none;
+            animation: popIn 0.3s ease;
+            padding: 20px;
+            overflow-y: auto;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border: 3px solid #ff5e62;
+        }
+        
+        @keyframes popIn {
+            0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0; }
+            100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+        }
+        
+        .popup-header {
+            background: linear-gradient(to right, #ff9966, #ff5e62);
+            color: white;
+            padding: 15px 20px;
+            position: relative;
+            border-radius: 10px 10px 0 0;
+            margin: -20px -20px 20px -20px;
+        }
+        
+        .popup-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            cursor: pointer;
+        }
+        
+        .popup-body {
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .popup-title {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #29303b;
+        }
+        
+        .popup-content {
+            margin: 20px 0;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #444;
+        }
+        
+        .popup-button {
+            background: #29303b;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            width: 70%;
+            max-width: 250px;
+        }
+        
+        .popup-button:hover {
+            background: #ff5e62;
+        }
+        
+        /* Claim Button */
+        .claim-button {
+            background: linear-gradient(to right, #ff9966, #ff5e62);
+            color: white;
+            border: none;
+            padding: 18px 40px;
+            border-radius: 50px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 30px 0;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .claim-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 25px rgba(0,0,0,0.3);
+        }
+        
+        .claim-button:active {
+            transform: translateY(1px);
+        }
+        
+        /* Canva Template Screen */
+        .canva-template {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #74b9ff, #0984e3);
+            z-index: 10000;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+        
+        .canva-logo {
+            font-size: 4rem;
+            margin-bottom: 30px;
+            color: white;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        
+        .canva-title {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+        
+        .canva-subtitle {
+            font-size: 1.8rem;
+            margin-bottom: 40px;
+            max-width: 800px;
+            line-height: 1.5;
+        }
+        
+        .canva-features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            max-width: 1000px;
+            margin: 30px 0;
+        }
+        
+        .canva-feature {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 25px;
+            border-radius: 15px;
+            width: 250px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+        
+        .canva-feature i {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+        
+        .canva-feature h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .canva-feature p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .features {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .feature {
+                width: 90%;
+                margin: 10px 0;
+            }
+            
+            .hero {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .popup-title {
+                font-size: 1.5rem;
+            }
+            
+            .popup-content {
+                font-size: 1rem;
+            }
+            
+            .canva-title {
+                font-size: 2.2rem;
+            }
+            
+            .canva-subtitle {
+                font-size: 1.4rem;
+            }
+            
+            .canva-features {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .popup {
+                width: 90%;
+            }
+        }
+        
+        /* Final Educational Message */
+        .educational-popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #00b894, #00cec9);
+            z-index: 10002;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            text-align: center;
+            color: white;
+        }
+        
+        .educational-title {
+            font-size: 3rem;
+            margin-bottom: 30px;
+            font-weight: 800;
+        }
+        
+        .educational-content {
+            font-size: 1.8rem;
+            max-width: 900px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-paint-brush"></i>
+                Canva
+            </div>
+            <p class="tagline">Design Beautiful Graphics in Minutes</p>
+        </header>
+        
+        <div class="hero">
+            <h1>FREE Access to <span class="highlight">Canva Pro</span></h1>
+            <h2>Limited Time: <span class="highlight">Premium Design Features</span></h2>
+            
+            <div class="price">
+                <span class="original-price">$12.99/month</span>
+                <span class="discount">FREE</span>
+            </div>
+            
+            <p>Get unlimited access to premium templates, images, and design tools for 30 days!</p>
+            
+            <div class="countdown">
+                <p>Offer expires in:</p>
+                <div class="timer" id="timer">05:00</div>
+            </div>
+            
+            <button class="claim-button" id="claimButton">CLAIM MY FREE ACCESS NOW</button>
+        </div>
+        
+        <div class="features">
+            <div class="feature">
+                <h3>100M+ Premium Assets</h3>
+                <p>Access to millions of high-quality photos, videos, and templates</p>
+            </div>
+            <div class="feature">
+                <h3>Advanced Editing Tools</h3>
+                <p>Professional features like background removal and image enhancement</p>
+            </div>
+            <div class="feature">
+                <h3>Brand Kit</h3>
+                <p>Maintain consistent branding across all your designs</p>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>© 2023 Canva. All rights reserved.</p>
+        <p>This is a legitimate offer. Terms and conditions apply.</p>
+    </footer>
+    
+    <!-- Canva Template Screen -->
+    <div class="canva-template" id="canvaTemplate">
+        <div class="canva-logo">
+            <i class="fas fa-paint-brush"></i>
+        </div>
+        <h1 class="canva-title">UNLOCK YOUR CREATIVITY</h1>
+        <p class="canva-subtitle">Access premium templates, images, and design tools with Canva Pro</p>
+        
+        <div class="canva-features">
+            <div class="canva-feature">
+                <i class="fas fa-image"></i>
+                <h3>Premium Photos</h3>
+                <p>Millions of high-quality images to enhance your designs</p>
+            </div>
+            <div class="canva-feature">
+                <i class="fas fa-font"></i>
+                <h3>Advanced Fonts</h3>
+                <p>Access to thousands of beautiful fonts for your projects</p>
+            </div>
+            <div class="canva-feature">
+                <i class="fas fa-expand"></i>
+                <h3>Resize Anything</h3>
+                <p>Resize designs without losing quality in one click</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Educational Popup -->
+    <div class="educational-popup" id="educationalPopup">
+        <h1 class="educational-title"> phishing simulation </h1>
+        <p class="educational-content">
+            This was a security awareness training exercise. 
+            You just experienced a simulated phishing attack designed to test your response to urgent, deceptive messages. 
+            Remember to always verify the source of urgent requests before taking action.
+        </p>
+    </div>
+    
+    <script>
+        // Popup content database
+        const popupMessages = [
+            {
+                title: "⚠ Critical Security Alert!",
+                content: "Unusual activity detected on your account. Immediate verification required to prevent suspension."
+            },
+            {
+                title: "⛔ Warning: Account Compromised!",
+                content: "Multiple unauthorized login attempts detected. Secure your account immediately."
+            },
+            {
+                title: "⚠ Security Breach Detected",
+                content: "Your Canva account password has been changed. Update your credentials now."
+            },
+            {
+                title: "⛔ License Verification Required",
+                content: "Your Canva Pro license has expired. Renew now to avoid losing access."
+            },
+            {
+                title: "⚠ Virus Detected in Your Design!",
+                content: "Malware found in one of your recent designs. Delete immediately to protect your files."
+            },
+            {
+                title: "⛔ Urgent: Data Breach Notice",
+                content: "Canva database potentially compromised. Confirm your identity to secure your data."
+            },
+            {
+                title: "⚠ Privacy Alert",
+                content: "Your personal information may have been exposed. Take protective action now."
+            },
+            {
+                title: "⛔ Payment Method Issue",
+                content: "Invalid payment method on file. Update to prevent account suspension."
+            },
+            {
+                title: "⚠ File Corruption Detected",
+                content: "One of your design files has been corrupted. Restore from backup immediately."
+            },
+            {
+                title: "⛔ System Maintenance Notice",
+                content: "Scheduled maintenance in 5 minutes. Save your work now to prevent data loss."
+            }
+        ];
+        
+        let popupQueue = [];
+        let popupCounter = 0;
+        let popupInterval;
+        let timerStarted = false;
+        let countdownTimer;
+        let secondsLeft = 300; // 5 minutes
+        let popupTimeout;
+        
+        // Add event listener to the claim button
+        document.getElementById('claimButton').addEventListener('click', function() {
+            startSimulation();
+        });
+        
+        function startSimulation() {
+            if (timerStarted) return;
+            
+            timerStarted = true;
+            
+            // Hide main content and show Canva template
+            document.querySelector('.container').style.display = 'none';
+            document.getElementById('canvaTemplate').style.display = 'flex';
+            
+            // Start countdown timer
+            startCountdown();
+            
+            // Show popups for 5 seconds
+            showPopups();
+            
+            // Show final educational message after 5 seconds
+            setTimeout(showFinalMessage, 5000);
+        }
+        
+        // Countdown timer
+        function startCountdown() {
+            countdownTimer = setInterval(() => {
+                secondsLeft--;
+                const minutes = Math.floor(secondsLeft / 60);
+                const seconds = secondsLeft % 60;
+                document.getElementById('timer').textContent = 
+                    `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                
+                if (secondsLeft <= 0) {
+                    clearInterval(countdownTimer);
+                }
+            }, 1000);
+        }
+        
+        // Show popups for 5 seconds
+        function showPopups() {
+            // Create popup queue (duplicate some messages for more intensity)
+            popupQueue = [...popupMessages, ...popupMessages.slice(0, 5)];
+            
+            popupCounter = 0; // Reset counter
+            
+            popupInterval = setInterval(() => {
+                if (popupQueue.length > 0 && popupCounter < 15) {
+                    showPopup(popupQueue.shift());
+                    popupCounter++;
+                } else {
+                    clearInterval(popupInterval);
+                }
+            }, 300); // Very high speed - new popup every 300ms
+            
+            // Clear popups after 5 seconds
+            popupTimeout = setTimeout(() => {
+                clearInterval(popupInterval);
+                const existingPopups = document.querySelectorAll('.popup');
+                existingPopups.forEach(popup => popup.remove());
+            }, 5000);
+        }
+        
+        // Show individual popup
+        function showPopup(message) {
+            // Create popup element
+            const popup = document.createElement('div');
+            popup.className = 'popup';
+            popup.innerHTML = `
+                <div class="popup-header">
+                    <span class="popup-close">×</span>
+                </div>
+                <div class="popup-body">
+                    <h2 class="popup-title">${message.title}</h2>
+                    <p class="popup-content">${message.content}</p>
+                    <button class="popup-button">Take Action Now</button>
+                </div>
+            `;
+            
+            // Add to document
+            document.body.appendChild(popup);
+            
+            // Show popup
+            popup.style.display = 'block';
+            
+            // Add close functionality
+            const closeBtn = popup.querySelector('.popup-close');
+            const actionBtn = popup.querySelector('.popup-button');
+            
+            closeBtn.addEventListener('click', function() {
+                popup.remove();
+            });
+            
+            actionBtn.addEventListener('click', function() {
+                popup.remove();
+            });
+        }
+        
+        // Show final educational message
+        function showFinalMessage() {
+            // Hide Canva template
+            document.getElementById('canvaTemplate').style.display = 'none';
+            
+            // Show educational message
+            document.getElementById('educationalPopup').style.display = 'flex';
+            
+            // Clear intervals
+            clearInterval(popupInterval);
+            clearInterval(countdownTimer);
+            clearTimeout(popupTimeout);
+        }
+    </script>
+</body>
+</html>
